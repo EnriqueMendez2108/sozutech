@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sozutech | Soluciones Tecnológicas</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+
+/* --- MODALES DE SERVICIOS ESPECIALIZADOS --- */
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  text-align: left;
+}
+
+.modal-content h3 {
+  color: var(--accent);
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  color: #0a2342;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+#formulario-datos h2 {
+  text-align: center;
+  display: block;
+  width: 100%;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+#lineal-container,
+.lineal-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  flex-wrap: nowrap;
+}
+
+.lineal-item {
+  flex: 1;
+  min-width: 250px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.lineal-item h3 {
+  text-align: center;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.lineal-item p {
+  color: black;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary);
+  padding: 10px 20px;
+  color: white;
+}
+
+.navbar .logo {
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none; /* oculto en escritorio */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex; /* SIEMPRE visible en escritorio */
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* --- Responsive --- */
+.botones-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .botones-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .botones-container button {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  .hamburger {
+    display: block; /* visible en móvil */
+  }
+
+  .nav-links {
+    display: none; /* oculto en móvil */
+    flex-direction: column;
+    background: var(--primary);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .nav-links.show {
+    display: flex; /* mostrar cuando se activa */
+  }
+}
+
+#formMessage {
+  text-align: center;
+  display: none;
+  color: yellow;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+form input,
+form textarea {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form button {
+  background: var(--accent);
+  color: #000;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #e6b800;
+}
+
+.lineal-item i {
+  width: 60px;
+  height: 60px;
+  font-size: 2.5rem;
+  color: var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+/* --- CONTACTANOS --- */
+#Contactanos h2 {
+  text-align: center;
+}
+
+#Contactanos > p {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+#formMessage {
+  text-align: center;
+  display: none;
+  color: yellow;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+#servicios-especializados {
+  margin-bottom: 20px;
+}
+  
+#servicios-especializados {
+  margin-bottom: 20px;   /* reduce el espacio debajo de los modales */
+}
+
+
+        :root {
+            --primary: #0a2342;
+            --secondary: #1d3e6e;
+            --accent: #f0c419;
+            --bg: #f5f7fa;
+            --text-light: #ffffff;
+            --text-dark: #2c3e50;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+
+        /* --- HERO SECTION --- */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background-color: var(--primary);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 1;
+        }
+
+        .slide.active { opacity: 1; z-index: 2; }
+
+        .hero-slider::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(10, 35, 66, 0.7);
+            z-index: 3;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+            color: var(--text-light);
+            max-width: 850px;
+            padding: 0 20px;
+            width: 100%;
+            animation: fadeInSlide 1.2s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3.5rem, 10vw, 5.5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 0.9;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .company-tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 5px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-top: -5px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .company-info {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.5;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 5px;
+        }
+
+        .stat-item {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+        }
+        
+
+        .stat-item i { color: var(--accent); font-size: 1.1rem; }
+
+        /* --- BOTONES --- */
+        .btn { 
+            font-family: 'Montserrat', sans-serif;
+            padding: 18px 38px; 
+            border-radius: 4px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            border: none; 
+            cursor: pointer; 
+        }
+        
+        .btn-primary { background: var(--accent); color: #1a1a1a; }
+        .btn-secondary { border: 2px solid white; color: white; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); margin-left: 10px; }
+
+        /* --- SECCIONES GENERALES --- */
+      section { padding: 100px 20px; max-width: 1200px; margin: auto; }
+        h2 { 
+            text-align: center; 
+            font-size: 2.5rem; 
+            margin-bottom: 50px; 
+            }
+
+/* Regla específica para Quiénes Somos */
+        #descripcion-empresa h2 {
+        color: var(--text-muted);
+            }
+
+
+        /* --- SERVICIOS GRID --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-10px); }
+        .card i { font-size: 3rem; color: var(--secondary); margin-bottom: 20px; }
+
+        .btn-more {
+            background: none; border: 2px solid var(--secondary); color: var(--secondary);
+            padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 20px;
+        }
+
+        /* --- SECCIÓN POR QUÉ ELEGIRNOS --- */
+        .why-us { background-color: var(--primary); color: white; max-width: 100%; border-radius: 0; }
+        .why-us h2 { color: var(--accent); }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 40px; }
+        .why-item { text-align: center; padding: 20px; }
+        .why-item i { font-size: 2.8rem; color: var(--accent); margin-bottom: 20px; }
+        .why-item h3 { font-size: 1.2rem; margin-bottom: 15px; color: white; }
+        .why-item p { font-size: 0.95rem; color: rgba(255,255,255,0.8); }
+
+        /* --- MODALES --- */
+        .modal {
+            display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(10, 35, 66, 0.4); backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background: rgb(13, 75, 126); margin: 5% auto; padding: 40px; border-radius: 20px;
+            max-width: 500px; width: 90%; position: relative;
+        }
+        .close { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; }
+
+        footer { background: var(--primary); color: white; text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @keyframes fadeInSlide { from { opacity: 0; transform: translate(-50%, -45%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+  <div class="logo">Sozutech</div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#descripcion-empresa">Quiénes Somos</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#vision-mision-valores">Visión y Valores</a></li>
+    <li><a href="#Contactanos">Contáctanos</a></li>
+  </ul>
+</nav>
+
+    <header class="hero-slider">
+        <div class="slide active" style="background-image: url('img/Desarrollo_de_paginas_web_modenas.jpg');"></div>
+        <div class="slide" style="background-image: url('img/Desarrollo_de_paginas_web.jpg');"></div>
+        <div class="slide" style="background-image: url('img/Desarrollo_de_software.jpg');"></div>
+        <div class="slide" style="background-image: url('img/Soporte_tecnico.jpg');"></div>
+        
+       <div class="hero-content">
+    <h1>Sozutech</h1>
+    <span class="company-tagline">Innovación y Confianza</span>
+
+    
+
+    <!-- Eslogan animado -->
+   <style>
+
+/* --- FORMULARIO DE CONTACTO EN HORIZONTAL --- Aqui*/
+
+
+.slogan span {
+  display: block;
+  font-size: 42px;          /* más grande */
+  font-weight: 900;         /* más grueso */
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 12px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+/* Primera línea: gradiente tecnológico */
+.slogan .line1 {
+  background: linear-gradient(90deg, #0a2342, #25D366);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  animation-delay: 0.5s;
+}
+
+/* Segunda línea: dorado elegante con brillo */
+.slogan .line2 {
+  background: linear-gradient(90deg, #FFD700, #f0c419);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(240,196,25,0.9);
+  animation-delay: 1.5s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fa-solid fa-check-double"></i><span>CALIDAD</span></div>
+                <div class="stat-item"><i class="fa-solid fa-shield-halved"></i><span>SEGURIDAD</span></div>
+                <div class="stat-item"><i class="fa-solid fa-clock"></i><span>RAPIDEZ</span></div>
+            </div>
+           <section id="descripcion-empresa">
+        <h2>Quiénes Somos</h2>
+        <p>
+            En <strong>Sozutech</strong> ofrecemos soluciones tecnológicas integrales diseñadas para transformar hogares y empresas. 
+            Nos enfocamos en la innovación constante, la seguridad de la información y un servicio personalizado que garantiza 
+            la confianza de nuestros clientes. Nuestro compromiso es ser más que un proveedor: somos un aliado estratégico 
+            que impulsa tu crecimiento con tecnología confiable y moderna.
+        </p>
+        </section>
+
+
+
+                <div class="btn-group">
+                <button onclick="openModal('modal-cotizacion')" class="btn btn-primary">Contactanos</button>
+                <a href="#servicios" class="btn btn-secondary">Servicios</a>
+            </div>
+        </div>  
+    </header>
+
+    
+
+    <section id="servicios">
+        <h2>Servicios Especializados</h2>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <h3>Desarrollo Web</h3>
+                    <p>Sitios modernos y optimizados.</p>
+                     <p>Desarrollo de software y Testing</p>
+                </div>
+                <button class="btn-more" onclick="openModal('modal-web')">Saber más</button>
+            </div>
+            <div class="card">
+                <div>
+                    <i class="fa-solid fa-gears"></i>
+                    <h3>Soporte Técnico</h3>
+                    <p>Mantenimiento Preventivo y Correctivo </p>
+                    <p>Reparación experta a tu equipo de computo.</p>
+                </div>
+                <button class="btn-more" onclick="openModal('modal-soporte')">Saber más</button>
+            </div>
+            <div class="card">
+                <div>
+                    <i class="fa-solid fa-network-wired"></i>
+                    <h3>Redes</h3>
+                    <p>Conectividad segura y veloz.</p>
+                    <p>Soporte a Redes y Wifi.</p>
+                </div>
+                <button class="btn-more" onclick="openModal('modal-redes')">Saber más</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <h2>¿Por qué elegir Sozutech?</h2>
+        <div class="why-grid">
+            <div class="why-item">
+                <i class="fa-solid fa-rocket"></i>
+                <h3>Soluciones a Medida</h3>
+                <p>No creemos en soluciones genéricas. Analizamos tus necesidades para ofrecerte tecnología que realmente impulse tu crecimiento.</p>
+            </div>
+            <div class="why-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <h3>Soporte Personalizado</h3>
+                <p>Atención directa y experta, ya sea en tu oficina o en la comodidad de tu hogar, garantizando tu continuidad operativa.</p>
+            </div>
+            <div class="why-item">
+                <i class="fa-solid fa-shield-halved"></i> 
+                <h3>Seguridad y Confianza</h3>
+                <p>Protegemos tu información y tus equipos con los más altos estándares éticos y técnicos del mercado actual.</p>
+            </div>
+            <div class="why-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Escalabilidad</h3>
+                <p>Nuestras implementaciones están diseñadas para crecer contigo, desde un emprendimiento local hasta una empresa en expansión.</p>
+            </div>
+            
+        </div>
+
+        <section id="vision-mision-valores">
+  <h2>Nuestra Visión, Misión y Valores</h2>
+  <div class="lineal-container">
+    <div class="lineal-item">
+      <i class="fa-solid fa-eye"></i>
+      <h3>Visión</h3>
+      <p>Ser líderes en soluciones tecnológicas innovadoras que transformen hogares y empresas.</p>
+    </div>
+    <div class="lineal-item">
+      <i class="fa-solid fa-bullseye"></i>
+      <h3>Misión</h3>
+      <p>Ofrecer servicios tecnológicos integrales con calidad, seguridad y rapidez, generando confianza en cada cliente.</p>
+    </div>
+    <div class="lineal-item">
+      <i class="fa-solid fa-heart"></i>
+      <h3>Valores</h3>
+      <p>Innovación, compromiso, ética, confianza y orientación al cliente.</p>
+    </div>
+  </div>
+</section>
+
+<section id="Contactanos">
+  <h2>CONTÁCTANOS</h2>
+  <p>¿Tienes dudas o quieres una cotización? Llena el formulario y nos pondremos en contacto contigo.</p>
+  
+  <form id="contactForm" action="https://formspree.io/f/xjgjjzkg" method="POST">
+    <input type="text" name="nombre" placeholder="Tu Nombre" required>
+    <input type="email" name="email" placeholder="Tu Email" required>
+    <input type="tel" name="telefono" placeholder="Tu Teléfono (10 dígitos)" required>
+    <textarea name="mensaje" placeholder="Tu Mensaje"></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <p id="formMessage" style="color:yellow; display:none;">¡Gracias! Tu mensaje fue enviado.</p>
+</section>
+
+    
+
+    <div id="modal-web" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-web')">&times;</span>
+            <h3>Desarrollo Web</h3>
+            <ul>
+                <li>Testing en tus aplicaciones Web o Móbile.</li>
+                <li>Tiendas Virtuales (E-commerce).</li>
+                <li>Landing Pages profesionales.</li>
+                <li>Desarrollo de Software.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-soporte" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-soporte')">&times;</span>
+            <h3>Soporte Técnico</h3>
+            <ul>
+                <li>Reparación de equipo de computo Laptops, All in one o pc de escritorio.</li>
+                <li>Mantenimiento preventivo y correctivo.</li>
+                <li>Optimización de Software.</li>
+                <li>Instalación de Antivirus.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-redes" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-redes')">&times;</span>
+            <h3>Redes e Infraestructura</h3>
+            <ul>
+                <li>Dar de alta equipo en la red local/corporativa.</li>
+                <li>Instalacion y creación de Red.</li>
+                <li>Cableado estructurado.</li>
+                <li>Configuración Wi-Fi.</li>
+             </ul>
+        </div>
+    </div>
+
+   <div id="modal-cotizacion" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-cotizacion')">&times;</span>
+    <h3>Proporcionar tus datos</h3>
+    <form id="form-cotizacion" 
+          action="https://formspree.io/f/xjgjjzkg" 
+          method="POST" 
+          style="display:flex; flex-direction:column; gap:10px;" 
+          autocomplete="off">
+
+      <input type="text" name="nombre" placeholder="Tu Nombre" style="padding:10px; border:1px solid #ccc;" required>
+      <input type="email" name="email" placeholder="Tu Email" style="padding:10px; border:1px solid #ccc;" required>
+      
+      <input 
+        type="tel" 
+        name="telefono"
+        placeholder="Tu Teléfono (10 dígitos)" 
+        style="padding:10px; border:1px solid #ccc;" 
+        required 
+        maxlength="10" 
+        pattern="[0-9]{10}" 
+        title="Por favor, ingresa exactamente 10 dígitos numéricos"
+        oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+      <!-- Selección múltiple de servicios -->
+      <label for="servicios">Selecciona los servicios que deseas:</label>
+      <select name="servicios[]" id="servicios" multiple style="padding:10px; border:1px solid #ccc;">
+        <option value="Diseño Web">Diseño Web</option>
+        <option value="Desarrollo de Software">Desarrollo de Software</option>
+        <option value="Consultoría Tecnológica">Soporte Técnico</option>
+        <option value="Soporte Técnico">Redes</option>
+        <option value="Marketing Digital">Asesoría</option>
+      </select>
+
+      <!-- Campo de mensaje -->
+      <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." style="padding:10px; border:1px solid #ccc; min-height:80px;"></textarea>
+      
+      <button type="submit" class="btn btn-primary">ENVIAR</button>
+    </form>
+
+    <p id="modalMessage" style="display:none; color:yellow; font-weight:bold; margin-top:10px;">
+      ¡Gracias! Tu solicitud fue enviada.
+    </p>
+  </div>
+</div>
+
+
+
+    <footer>
+        <body>
+  <a href="https://wa.me/525521080388" target="_blank" 
+   style="position:fixed; bottom:20px; right:20px; background-color:#25D366; 
+          border-radius:50%; padding:12px; box-shadow:2px 2px 5px rgba(0,0,0,0.3);">
+  <i class="fab fa-whatsapp" style="font-size:32px; color:white;"></i>
+</a>
+</body>
+
+<!-- Botón de teléfono -->
+<a href="tel:+5256 6032 3684" 
+   style="display:inline-block; background-color:#007BFF; color:white; 
+          padding:10px 20px; border-radius:5px; text-decoration:none; 
+          font-family:sans-serif; font-size:16px;">
+  📞 Llámanos: +52 55 2108 0388
+</a>
+
+        <p>© 2026 Sozutech - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        setInterval(() => {
+            if(slides.length > 0) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+        }, 5000);
+
+        function openModal(id) {
+            document.getElementById(id).style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+
+                // LIMPIEZA TOTAL: Forzamos el reset y el vaciado manual de cada input
+                const form = modal.querySelector('form');
+                if (form) {
+                    form.reset(); 
+                    const inputs = form.querySelectorAll('input');
+                    inputs.forEach(input => {
+                        input.value = "";
+                    });
+                }
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('¡Gracias! Hemos recibido tu solicitud. Nos contactaremos pronto.');
+            closeModal('modal-cotizacion');
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target.id);
+            }
+        }
+        
+    </script>
+    <script src="jss/main.js"></script>
+</body>
+</html>
+
+</body>
+</html>
