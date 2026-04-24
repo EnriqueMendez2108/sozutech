@@ -1,0 +1,287 @@
+:root {
+  --primary: #0a2342;
+  --accent: #f0c419;
+  --text-main: #2c3e50;
+  --text-muted: #546e7a;
+  --bg-light: #f9f9f9;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- HERO --- */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--primary);
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.slide.active { opacity: 1; }
+
+.hero-slider::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(10, 35, 66, 0.6);
+  z-index: 1;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  color: white;
+  width: 90%;
+}
+
+.hero-content h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(3.5rem, 10vw, 5.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--accent); /* ahora usa color en lugar de degradado */
+}
+
+/* --- BOTONES --- */
+.btn {
+  font-family: 'Montserrat', sans-serif;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.btn-primary { background: var(--accent); color: #000; }
+.btn-secondary { border: 1px solid white; color: white; margin-left: 10px; }
+.btn:hover { transform: translateY(-3px); }
+
+/* --- SECCIONES --- */
+section { 
+  padding: 60px 20px; 
+  max-width: 1200px; 
+  margin: auto; 
+}
+h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  /* color eliminado para no forzar todos los títulos */
+}
+
+/* --- QUIÉNES SOMOS --- */
+#descripcion-empresa {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--bg-light);
+  border-top: 3px solid var(--accent);
+}
+
+/* Regla específica que sobrescribe la global */
+#descripcion-empresa h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: var(--text-muted); /* mismo color que el párrafo */
+}
+
+#descripcion-empresa p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* --- VISIÓN, MISIÓN Y VALORES --- */
+#vision-mision-valores {
+  padding: 60px 20px;
+  background: var(--bg-light);
+  text-align: center;
+}
+
+#vision-mision-valores h2 {
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  color: var(--primary);
+}
+
+.lineal-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* igual que why-grid */
+  gap: 30px;
+}
+
+.lineal-item {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.lineal-item i 
+  .lineal-item i {
+  width: 60px;              /* ancho fijo */
+  height: 60px;             /* alto fijo */
+  font-size: 2.5rem;        /* tamaño del icono */
+  color: var(--accent);     /* color dorado */
+  display: flex;            /* flex para centrar */
+  justify-content: center;  /* centra horizontalmente */
+  align-items: center;      /* centra verticalmente */
+  margin: 0 auto 15px;
+  .lineal-item i 
+  background: var(--primary); /* color de fondo */
+  border-radius: 50%;         /* círculo perfecto */
+     /* centra el bloque y deja espacio debajo */
+}
+  
+#formulario-datos h2 {
+ text-align: center  !important;   /* centra el texto */
+  display: block;       /* asegura que se comporte como bloque */
+  width: 100%;          /* ocupa todo el ancho disponible */
+  color: var(--accent); /* dorado elegante */
+  margin-bottom: 20px;
+}
+
+
+.lineal-item h3 {
+  text-align: center;   /* centra el título dentro del recuadro */
+  color: var(--accent); /* dorado elegante */
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+
+.lineal-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+ #Contactanos h2 {
+  text-align: center;   /* centra el título CONTÁCTANOS */
+}
+
+#Contactanos > p {
+  text-align: center;   /* centra solo el párrafo de la leyenda */
+  margin: 0 auto;
+  max-width: 800px;     /* opcional: limita el ancho para mejor lectura */
+}
+
+#formMessage {
+  text-align: center;   /* centra el mensaje de confirmación */
+  display: none;
+  color: yellow;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary);
+  padding: 10px 20px;
+  color: white;
+}
+
+.navbar .logo {
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none; /* oculto en escritorio */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* mostrar en móviles */
+  }
+  .nav-links {
+    display: none; /* ocultar menú por defecto */
+    flex-direction: column;
+    background: var(--primary);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .nav-links.show {
+    display: flex; /* mostrar cuando se activa */
+  }
+}
+/* --- FORMULARIO DE CONTACTO EN HORIZONTAL --- */
+/* --- MODALES DE SERVICIOS ESPECIALIZADOS --- */
+.modal-content {
+  background: #fff;              /* fondo del recuadro */
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.modal-content h3 {
+  color: var(--accent);          /* títulos en dorado */
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  color: #0a2342;         /* descripciones en azul oscuro */
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+#modal-web .modal-content p { color: #0a2342; }      /* Desarrollo Web */
+#modal-soporte .modal-content p { color: #FFD700; }  /* Soporte Técnico */
+#modal-redes .modal-content p { color: #546e7a; }    /* Redes */
+
+#servicios-especializados {
+  margin-bottom: 20px;   /* reduce el espacio debajo de los modales */
+}
+
+
