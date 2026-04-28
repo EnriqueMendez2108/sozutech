@@ -362,13 +362,104 @@ form button:hover {
         /* --- MODALES --- */
         .modal {
             display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(10, 35, 66, 0.4); backdrop-filter: blur(8px);
+            background-color: rgba(10, 35, 66, 0.5); backdrop-filter: blur(8px);
         }
         .modal-content {
-            background: rgb(13, 75, 126); margin: 5% auto; padding: 40px; border-radius: 20px;
-            max-width: 500px; width: 90%; position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            margin: 5% auto; padding: 40px; border-radius: 12px;
+            max-width: 550px; width: 90%; position: relative;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.8);
         }
-        .close { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; }
+        .modal-content h3 {
+            color: #0a2342;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .modal-content label {
+            display: block;
+            color: #0a2342;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+        .modal-content label:first-of-type {
+            margin-top: 0;
+        }
+        .modal-content input,
+        .modal-content select,
+        .modal-content textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            color: #0a2342;
+            background: #fff;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        .modal-content input:focus,
+        .modal-content select:focus,
+        .modal-content textarea:focus {
+            outline: none;
+            border-color: #25D366;
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+            background: #fafbfc;
+        }
+        .modal-content input::placeholder,
+        .modal-content textarea::placeholder {
+            color: #999;
+        }
+        .modal-content textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .modal-content button {
+            width: 100%;
+            padding: 14px 24px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #25D366 0%, #1fb851 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+        .modal-content button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+            background: linear-gradient(135deg, #1fb851 0%, #18a347 100%);
+        }
+        .modal-content button:active {
+            transform: translateY(0);
+        }
+        .close {
+            position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer;
+            color: #0a2342;
+            width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .close:hover {
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 50%;
+            color: #ff4444;
+        }
 
         footer { background: var(--primary); color: white; text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
 

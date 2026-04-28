@@ -86,8 +86,9 @@
                 <div class="stat-item"><i class="fa-solid fa-clock"></i><span>RAPIDEZ</span></div>
             </div>
            <section id="descripcion-empresa">
+             <h3 style="text-align: center; font-size: 28px; font-weight: 900; color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); margin-bottom: 20px;">Soluciones inteligentes, resultados reales</h3>
         <h2>Quiénes Somos</h2>
-        <h3 style="text-align: center; font-size: 28px; font-weight: 900; color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); margin-bottom: 20px;">Soluciones inteligentes, resultados reales</h3>
+       
         <p>
             En <strong>Sozutech</strong> ofrecemos soluciones tecnológicas integrales diseñadas para transformar hogares y empresas. 
             Nos enfocamos en la innovación constante, la seguridad de la información y un servicio personalizado que garantiza 
@@ -273,42 +274,44 @@
    <div id="modal-cotizacion" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-cotizacion')">&times;</span>
-    <h3>Proporcionar tus datos</h3>
+    <h3>Solicita tu Cotización</h3>
     <form id="form-cotizacion" 
           action="https://formspree.io/f/xjgjjzkg" 
           method="POST" 
-          style="display:flex; flex-direction:column; gap:10px;" 
           autocomplete="off">
 
-      <input type="text" name="nombre" placeholder="Tu Nombre" style="padding:10px; border:1px solid #ccc;" required>
-      <input type="email" name="email" placeholder="Tu Email" style="padding:10px; border:1px solid #ccc;" required>
+      <label for="nombre">Nombre Completo</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre - Apellido" required>
       
+      <label for="email">Correo Electrónico</label>
+      <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+      
+      <label for="telefono">Teléfono (10 dígitos)</label>
       <input 
         type="tel" 
+        id="telefono"
         name="telefono"
-        placeholder="Tu Teléfono (10 dígitos)" 
-        style="padding:10px; border:1px solid #ccc;" 
+        placeholder="5566023684" 
         required 
         maxlength="10" 
         pattern="[0-9]{10}" 
         title="Por favor, ingresa exactamente 10 dígitos numéricos"
         oninput="this.value = this.value.replace(/[^0-9]/g, '')">
 
-      <!-- Selección múltiple de servicios -->
-      <label for="servicios">Selecciona los servicios que deseas:</label>
-      <select name="servicios[]" id="servicios" multiple style="padding:10px; border:1px solid #ccc;">
+      <label for="servicios">Servicios de Interés</label>
+      <select name="servicios[]" id="servicios" multiple required>
         <option value="Diseño Web">Diseño Web</option>
         <option value="Desarrollo de Software">Desarrollo de Software</option>
         <option value="Soporte Técnico">Soporte Técnico</option>
-        <option value="Redes">Redes</option>
+        <option value="Redes">Redes e Infraestructura</option>
         <option value="Asesoría">Asesoría Tecnológica</option>
-         <option value="Asesoría">Venta de Equipos de Cómputo</option>
+        <option value="Venta de Equipos">Venta de Equipos de Cómputo</option>
       </select>
 
-      <!-- Campo de mensaje -->
-      <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." style="padding:10px; border:1px solid #ccc; min-height:80px;"></textarea>
+      <label for="mensaje">Mensaje (Opcional)</label>
+      <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos más sobre tu proyecto..." ></textarea>
       
-      <button type="submit" class="btn btn-primary">ENVIAR</button>
+      <button type="submit">ENVIAR SOLICITUD</button>
     </form>
 
   </div>
