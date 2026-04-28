@@ -35,6 +35,51 @@
 
     
 
+    <!-- Eslogan animado -->
+   <style>
+
+/* --- FORMULARIO DE CONTACTO EN HORIZONTAL --- Aqui*/
+
+
+.slogan span {
+  display: block;
+  font-size: 42px;          /* más grande */
+  font-weight: 900;         /* más grueso */
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 12px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+/* Primera línea: gradiente tecnológico */
+.slogan .line1 {
+  background: linear-gradient(90deg, #0a2342, #25D366);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  animation-delay: 0.5s;
+}
+
+/* Segunda línea: dorado elegante con brillo */
+.slogan .line2 {
+  background: linear-gradient(90deg, #FFD700, #f0c419);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(240,196,25,0.9);
+  animation-delay: 1.5s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
             <div class="hero-stats">
                 <div class="stat-item"><i class="fa-solid fa-check-double"></i><span>CALIDAD</span></div>
                 <div class="stat-item"><i class="fa-solid fa-shield-halved"></i><span>SEGURIDAD</span></div>
@@ -42,6 +87,7 @@
             </div>
            <section id="descripcion-empresa">
         <h2>Quiénes Somos</h2>
+        <h3 style="text-align: center; font-size: 28px; font-weight: 900; color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); margin-bottom: 20px;">Soluciones inteligentes, resultados reales</h3>
         <p>
             En <strong>Sozutech</strong> ofrecemos soluciones tecnológicas integrales diseñadas para transformar hogares y empresas. 
             Nos enfocamos en la innovación constante, la seguridad de la información y un servicio personalizado que garantiza 
