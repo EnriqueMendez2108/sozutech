@@ -31,12 +31,12 @@ window.closeModal = function(id) {
 };
 
 // ⚡ FUNCIÓN DEL MENÚ HAMBURGUESA
-function toggleMenu() {
+window.toggleMenu = function() {
     const navLinks = document.querySelector(".nav-links");
     if (navLinks) {
         navLinks.classList.toggle("show");
     }
-}
+};
 
 // 2. INICIALIZACIÓN DE EVENTOS
 document.addEventListener('DOMContentLoaded', () => {
@@ -155,11 +155,5 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('show');
         });
     }
-});
-function openModal(id) {
-  document.getElementById(id).style.display = "block";
-}
 
-function closeModal(id) {
-  document.getElementById(id).style.display = "none";
-}
+});

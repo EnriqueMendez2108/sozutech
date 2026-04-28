@@ -24,15 +24,6 @@
   margin-bottom: 15px;
 }
 
-#formulario-datos h2 {
-  text-align: center;
-  display: block;
-  width: 100%;
-  color: var(--accent);
-  margin-bottom: 20px;
-}
-
-#lineal-container,
 .lineal-container {
   display: flex;
   justify-content: center;
@@ -72,6 +63,7 @@
   background: var(--primary);
   padding: 10px 20px;
   color: white;
+  position: relative;
 }
 
 .navbar .logo {
@@ -101,23 +93,7 @@
 }
 
 /* --- Responsive --- */
-.botones-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
 @media (max-width: 768px) {
-  .botones-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .botones-container button {
-    width: 90%;
-    margin-bottom: 10px;
-  }
-
   .hamburger {
     display: block; /* visible en móvil */
   }
@@ -131,19 +107,13 @@
     right: 20px;
     padding: 15px;
     border-radius: 8px;
+    z-index: 1000;
   }
 
   .nav-links.show {
     display: flex; /* mostrar cuando se activa */
+    z-index: 1000;
   }
-}
-
-#formMessage {
-  text-align: center;
-  display: none;
-  color: yellow;
-  font-weight: bold;
-  margin-top: 15px;
 }
 
 form {
@@ -209,13 +179,6 @@ form button:hover {
   margin-top: 15px;
 }
 
-#servicios-especializados {
-  margin-bottom: 20px;
-}
-  
-#servicios-especializados {
-  margin-bottom: 20px;   /* reduce el espacio debajo de los modales */
-}
 
 
         :root {
@@ -307,14 +270,6 @@ form button:hover {
             display: block;
         }
 
-        .company-info {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
-            margin: 0 auto 30px;
-            line-height: 1.5;
-        }
-
         .hero-stats {
             display: flex;
             justify-content: center;
@@ -367,7 +322,7 @@ form button:hover {
 
 
         /* --- SERVICIOS GRID --- */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(4, minmax(220px, 1fr)); gap: 30px; }
         .card {
             background: white;
             padding: 40px;
@@ -393,6 +348,14 @@ form button:hover {
         .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 40px; }
         .why-item { text-align: center; padding: 20px; }
         .why-item i { font-size: 2.8rem; color: var(--accent); margin-bottom: 20px; }
+
+        @media (max-width: 1200px) {
+            .grid { grid-template-columns: repeat(2, minmax(250px, 1fr)); }
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+        }
         .why-item h3 { font-size: 1.2rem; margin-bottom: 15px; color: white; }
         .why-item p { font-size: 0.95rem; color: rgba(255,255,255,0.8); }
 
@@ -408,6 +371,43 @@ form button:hover {
         .close { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; }
 
         footer { background: var(--primary); color: white; text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        /* --- MEDIA QUERIES PARA RESPONSIVIDAD --- */
+
+        @media (max-width: 1024px) {
+            /* Tablets */
+            section { padding: 80px 20px; }
+            h2 { font-size: 2.2rem; margin-bottom: 40px; }
+            .btn { padding: 16px 32px; }
+        }
+
+        @media (max-width: 768px) {
+            /* Móviles */
+            section { padding: 50px 15px; }
+            h2 { font-size: 1.8rem; margin-bottom: 30px; }
+            .btn { padding: 12px 20px; font-size: 0.9rem; }
+            .btn-secondary { margin-left: 0; margin-top: 10px; }
+            form { flex-direction: column; }
+            form input, form textarea { min-width: auto; }
+            footer { padding: 20px 15px; }
+            .hero-content { padding: 0 15px; }
+            .hero-stats { gap: 15px; }
+            .stat-item { font-size: 0.7rem; }
+            .modal-content { padding: 20px; }
+            .lineal-container { flex-direction: column; gap: 20px; }
+            .lineal-item { min-width: auto; }
+        }
+
+        @media (max-width: 480px) {
+            /* Móviles pequeños */
+            .hero-slider { height: 90vh; }
+            .btn-group { flex-direction: column; gap: 10px; }
+            .btn { width: 100%; }
+            .btn-secondary { margin-left: 0; }
+            /* Ajustar botones flotantes para no superponerse */
+            a[href*="wa.me"] { bottom: 80px; right: 15px; padding: 10px; }
+            a[href*="tel:"] { bottom: 20px; right: 15px; padding: 8px 15px; font-size: 14px; }
+        }
 
         @keyframes fadeInSlide { from { opacity: 0; transform: translate(-50%, -45%); } to { opacity: 1; transform: translate(-50%, -50%); } }
     </style>

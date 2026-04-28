@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar">
   <div class="logo">Sozutech</div>
-  <button class="hamburger" onclick="toggleMenu()">☰</button>
+  <button class="hamburger" type="button" onclick="toggleMenu()">☰</button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#descripcion-empresa">Quiénes Somos</a></li>
     <li><a href="#servicios">Servicios</a></li>
@@ -27,58 +27,13 @@
         <div class="slide" style="background-image: url('img/Desarrollo_de_paginas_web.jpg');"></div>
         <div class="slide" style="background-image: url('img/Desarrollo_de_software.jpg');"></div>
         <div class="slide" style="background-image: url('img/Soporte_tecnico.jpg');"></div>
-        <div class="slide" style="background-image: url('img/Soporte_tecnico_completo.jpg"></div>
+        <div class="slide" style="background-image: url('img/Soporte_tecnico_completo.jpg');"></div>
         
        <div class="hero-content">
     <h1>Sozutech</h1>
     <span class="company-tagline">Innovación y Confianza</span>
 
     
-
-    <!-- Eslogan animado -->
-   <style>
-
-/* --- FORMULARIO DE CONTACTO EN HORIZONTAL --- Aqui*/
-
-
-.slogan span {
-  display: block;
-  font-size: 42px;          /* más grande */
-  font-weight: 900;         /* más grueso */
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin: 12px 0;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
-}
-
-/* Primera línea: gradiente tecnológico */
-.slogan .line1 {
-  background: linear-gradient(90deg, #0a2342, #25D366);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-  animation-delay: 0.5s;
-}
-
-/* Segunda línea: dorado elegante con brillo */
-.slogan .line2 {
-  background: linear-gradient(90deg, #FFD700, #f0c419);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 15px rgba(240,196,25,0.9);
-  animation-delay: 1.5s;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>
 
             <div class="hero-stats">
                 <div class="stat-item"><i class="fa-solid fa-check-double"></i><span>CALIDAD</span></div>
@@ -98,9 +53,13 @@
 
 
                 <div class="btn-group">
-                <button onclick="openModal('modal-cotizacion')" class="btn btn-primary">Contactanos</button>
+                <button onclick="openModal('modal-cotizacion')" class="btn btn-primary">CONTÁCTANOS</button>
                 <a href="#servicios" class="btn btn-secondary">Servicios</a>
             </div>
+
+            <p id="modalMessage" style="display:none; color:yellow; font-weight:bold; margin-top:10px; text-align:center;">
+              ¡Gracias! Tu solicitud fue enviada.
+            </p>
         </div>  
     </header>
 
@@ -133,8 +92,18 @@
                     <h3>Redes</h3>
                     <p>Conectividad segura y veloz.</p>
                     <p>Soporte a Redes y Wifi.</p>
+                      
                 </div>
                 <button class="btn-more" onclick="openModal('modal-redes')">Saber más</button>
+            </div>
+            <div class="card">
+                <div>
+                    <i class="fa-solid fa-shop"></i>
+                    <h3>Venta de Equipos</h3>
+                    <p>Venta de equipo de cómputo moderno y confiable.</p>
+                    <p>Soporte de hardware y accesorios.</p>
+                </div>
+                <button class="btn-more" onclick="openModal('modal-venta')">Saber más</button>
             </div>
         </div>
     </section>
@@ -186,7 +155,7 @@
   </div>
 </section>
 
-<section id="Contactanos">
+<section id="CONTÁCTANOS">
   <h2>CONTÁCTANOS</h2>
   <p>¿Tienes dudas o quieres una cotización? Llena el formulario y nos pondremos en contacto contigo.</p>
   
@@ -242,6 +211,19 @@
         </div>
     </div>
 
+    <div id="modal-venta" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-venta')">&times;</span>
+            <h3>Venta de Equipos de Computo</h3>
+            <ul>
+                <li>Venta  de equipo de computo Laptops, All in one o pc de escritorio.</li>
+                <li>Equipo de Mantenimiento</li>
+                <li>Software.</li>
+                <li>Equipo Telefonico</li>
+            </ul>
+        </div>
+    </div>
+
    <div id="modal-cotizacion" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-cotizacion')">&times;</span>
@@ -274,6 +256,7 @@
         <option value="Soporte Técnico">Soporte Técnico</option>
         <option value="Redes">Redes</option>
         <option value="Asesoría">Asesoría Tecnológica</option>
+         <option value="Asesoría">Venta de Equipos de Computo</option>
       </select>
 
       <!-- Campo de mensaje -->
@@ -282,81 +265,23 @@
       <button type="submit" class="btn btn-primary">ENVIAR</button>
     </form>
 
-    <p id="modalMessage" style="display:none; color:yellow; font-weight:bold; margin-top:10px;">
-      ¡Gracias! Tu solicitud fue enviada.
-    </p>
   </div>
-</div>
+</div>  
 
 
+
+    <a href="https://wa.me/525660323684" target="_blank" style="position:fixed; bottom:20px; right:20px; background-color:#25D366; border-radius:50%; padding:12px; box-shadow:2px 2px 5px rgba(0,0,0,0.3); z-index:999;">
+      <i class="fab fa-whatsapp" style="font-size:32px; color:white;"></i>
+    </a>
+
+    <a href="tel:+525660323684" style="display:inline-block; position:fixed; bottom:100px; right:20px; background-color:#007BFF; color:white; padding:10px 20px; border-radius:5px; text-decoration:none; font-family:sans-serif; font-size:16px; z-index:999;">
+      📞 Llámanos: +52 56 6032 3684
+    </a>
 
     <footer>
-        <body>
-  <a href="https://wa.me/525521080388" target="_blank" 
-   style="position:fixed; bottom:20px; right:20px; background-color:#25D366; 
-          border-radius:50%; padding:12px; box-shadow:2px 2px 5px rgba(0,0,0,0.3);">
-  <i class="fab fa-whatsapp" style="font-size:32px; color:white;"></i>
-</a>
-</body>
-
-<!-- Botón de teléfono -->
-<a href="tel:+5256 6032 3684" 
-   style="display:inline-block; background-color:#007BFF; color:white; 
-          padding:10px 20px; border-radius:5px; text-decoration:none; 
-          font-family:sans-serif; font-size:16px;">
-  📞 Llámanos: +52 55 2108 0388
-</a>
-
         <p>© 2026 Sozutech - Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-        setInterval(() => {
-            if(slides.length > 0) {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }
-        }, 5000);
-
-        function openModal(id) {
-            document.getElementById(id).style.display = "block";
-            document.body.style.overflow = "hidden";
-        }
-
-        function closeModal(id) {
-            const modal = document.getElementById(id);
-            if (modal) {
-                modal.style.display = "none";
-                document.body.style.overflow = "auto";
-
-                // LIMPIEZA TOTAL: Forzamos el reset y el vaciado manual de cada input
-                const form = modal.querySelector('form');
-                if (form) {
-                    form.reset(); 
-                    const inputs = form.querySelectorAll('input');
-                    inputs.forEach(input => {
-                        input.value = "";
-                    });
-                }
-            }
-        }
-
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            alert('¡Gracias! Hemos recibido tu solicitud. Nos contactaremos pronto.');
-            closeModal('modal-cotizacion');
-        }
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                closeModal(event.target.id);
-            }
-        }
-        
-    </script>
     <script src="jss/main.js"></script>
 
 </body>
