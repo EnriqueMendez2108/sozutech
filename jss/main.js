@@ -33,8 +33,12 @@ window.closeModal = function(id) {
 // ⚡ FUNCIÓN DEL MENÚ HAMBURGUESA
 window.toggleMenu = function() {
     const navLinks = document.querySelector(".nav-links");
+    const hamburger = document.querySelector(".hamburger");
     if (navLinks) {
-        navLinks.classList.toggle("show");
+        const isOpen = navLinks.classList.toggle("show");
+        if (hamburger) {
+            hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        }
     }
 };
 

@@ -13,12 +13,12 @@
 <body>
     <nav class="navbar">
   <div class="logo">Sozutech</div>
-  <button class="hamburger" type="button" onclick="toggleMenu()">☰</button>
+  <button class="hamburger" type="button" aria-controls="navLinks" aria-expanded="false">☰</button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#descripcion-empresa">Quiénes Somos</a></li>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#vision-mision-valores">Visión y Valores</a></li>
-    <li><a href="#Contactanos">Contáctanos</a></li>
+    <li><a href="#contactanos">Contáctanos</a></li>
   </ul>
 </nav>
 
@@ -31,7 +31,7 @@
         
        <div class="hero-content">
     <h1>Sozutech</h1>
-    <span class="company-tagline">Innovación y Confianza</span>
+    <span class="company-tagline">Soluciones inteligentes, resultados reales</span>
 
     
 
@@ -86,7 +86,6 @@
                 <div class="stat-item"><i class="fa-solid fa-clock"></i><span>RAPIDEZ</span></div>
             </div>
            <section id="descripcion-empresa">
-             <h3 style="text-align: center; font-size: 28px; font-weight: 900; color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); margin-bottom: 20px;">Soluciones inteligentes, resultados reales</h3>
         <h2>Quiénes Somos</h2>
        
         <p>
@@ -202,7 +201,7 @@
   </div>
 </section>
 
-<section id="CONTÁCTANOS">
+<section id="contactanos">
   <h2>CONTÁCTANOS</h2>
   <p>¿Tienes dudas o quieres una cotización? Llena el formulario y nos pondremos en contacto contigo.</p>
   
@@ -331,7 +330,7 @@
         <p>© 2026 Sozutech - Todos los derechos reservados.</p>
     </footer>
 
-    <script src="jss/main.js"></script>
+    <script src="jss/main.js" defer></script>
 
 </body>
 </html>
