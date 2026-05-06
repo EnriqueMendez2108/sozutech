@@ -153,11 +153,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- EVENTO PARA EL MENÚ HAMBURGUESA ---
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    const closeMobileMenu = () => {
+        if (navLinks && navLinks.classList.contains('show')) {
+            navLinks.classList.remove('show');
+            if (hamburger) {
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        }
+    };
 
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
+        hamburger.addEventListener('click', toggleMenu);
     }
+
+    navItems.forEach(item => {
+        item.addEventListener('click', closeMobileMenu);
+    });
 
 });
