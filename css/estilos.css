@@ -59,15 +59,22 @@
   justify-content: space-between;
   align-items: center;
   background: var(--primary);
-  padding: 10px 20px;
+  padding: 15px 20px;
+  min-height: 110px;
   color: white;
   position: relative;
   z-index: 1000;
 }
 
 .navbar .logo {
-  font-weight: 900;
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.navbar .logo img {
+  height: 95px;
+  width: auto;
+  display: block;
 }
 
 .hamburger {
@@ -90,7 +97,9 @@
 .nav-links li a {
   color: white;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding: 10px 0;
 }
 
 /* --- Responsive --- */
@@ -258,6 +267,20 @@ form button:hover {
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
+        }
+
+        .hero-logo {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .hero-logo {
+                max-width: 360px;
+            }
         }
 
         .company-tagline {
