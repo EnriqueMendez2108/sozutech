@@ -207,7 +207,8 @@ form button:hover {
         .hero-slider {
             position: relative;
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
+            height: auto;
             overflow: hidden;
             background-color: var(--primary);
         }
@@ -295,12 +296,17 @@ form button:hover {
         /* --- BOTONES --- */
         .btn { 
             font-family: 'Montserrat', sans-serif;
-            padding: 18px 38px; 
+            padding: 14px 28px; 
             border-radius: 4px; 
             text-decoration: none; 
             font-weight: 700; 
             transition: all 0.3s ease; 
-            display: inline-block; 
+            display: inline-flex; 
+            justify-content: center;
+            align-items: center;
+            min-width: 160px;
+            max-width: 240px;
+            width: auto;
             border: none; 
             cursor: pointer; 
         }
@@ -364,6 +370,7 @@ form button:hover {
 
         @media (max-width: 768px) {
             .grid { grid-template-columns: 1fr; }
+            .btn { padding: 12px 24px; max-width: 220px; }
         }
         .why-item h3 { font-size: 1.2rem; margin-bottom: 15px; color: white; }
         .why-item p { font-size: 0.95rem; color: rgba(255,255,255,0.8); }
