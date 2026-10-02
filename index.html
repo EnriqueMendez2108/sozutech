@@ -45,7 +45,9 @@
   <button class="hamburger" type="button" aria-controls="navLinks" aria-expanded="false">☰</button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#descripcion-empresa">Quiénes Somos</a></li>
+    <li><a href="#Confianza y Metodología">Confianza y Metodología</a></li>
     <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#planes">Planes</a></li>
     <li><a href="#vision-mision-valores">Visión y Valores</a></li>
     <li><a href="#contactanos">Contáctanos</a></li>
   </ul>
@@ -182,6 +184,121 @@
         </div>
     </section>
 
+    <section id="planes">
+        <h2>Planes de Servicio</h2>
+        <div class="plans-table-wrap">
+          <table class="plans-table">
+            <caption class="visually-hidden">Comparación de los planes Básico, Premium y Enterprise</caption>
+            <thead>
+              <tr>
+                <th scope="col">Servicio</th>
+                <th scope="col"><button class="plan-select" type="button" data-plan-trigger="basico" aria-controls="plan-info-basico" aria-expanded="false">Plan Básico</button></th>
+                <th scope="col"><button class="plan-select" type="button" data-plan-trigger="premium" aria-controls="plan-info-premium" aria-expanded="false">Plan Premium</button></th>
+                <th scope="col"><button class="plan-select" type="button" data-plan-trigger="enterprise" aria-controls="plan-info-enterprise" aria-expanded="false">Plan Enterprise</button></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Desarrollo Web</th>
+                <td>Landing Page</td>
+                <td>Sitio completo con múltiples páginas</td>
+                <td>Solución a la medida</td>
+              </tr>
+              <tr>
+                <th scope="row">Mantenimiento</th>
+                <td>Mensual</td>
+                <td>Soporte prioritario</td>
+                <td>Soporte exclusivo 24/7</td>
+              </tr>
+              <tr>
+                <th scope="row">Tiempo de entrega</th>
+                <td>1–2 semanas</td>
+                <td>Según alcance</td>
+                <td>Según proyecto</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="comparison-summary">
+          <h3>Resumen comparativo</h3>
+          <div class="plans-table-wrap">
+            <table class="plans-table comparison-table">
+              <caption class="visually-hidden">Resumen comparativo de los planes Básico, Premium y Enterprise</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Criterio</th>
+                  <th scope="col">Plan Básico</th>
+                  <th scope="col">Plan Premium</th>
+                  <th scope="col">Plan Enterprise</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Complejidad</th>
+                  <td>Sencilla / Estándar</td>
+                  <td>Intermedia / Completa</td>
+                  <td>Alta / A la medida</td>
+                </tr>
+                <tr>
+                  <th scope="row">Público objetivo</th>
+                  <td>Emprendedores y freelancers</td>
+                  <td>PyMEs y negocios en expansión</td>
+                  <td>Empresas consolidadas / Corporativos</td>
+                </tr>
+                <tr>
+                  <th scope="row">Soporte</th>
+                  <td>Regular / Ocasional</td>
+                  <td>Prioritario</td>
+                  <td>Dedicado 24/7</td>
+                </tr>
+                <tr>
+                  <th scope="row">Escalabilidad</th>
+                  <td>Limitada</td>
+                  <td>Moderada</td>
+                  <td>Ilimitada, según los requerimientos del proyecto</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="plan-details" aria-live="polite">
+          <article class="plan-info" id="plan-info-basico" data-plan-panel="basico" aria-labelledby="plan-heading-basico" hidden>
+            <h3 id="plan-heading-basico">Plan Básico</h3>
+            <p><strong>Ideal para:</strong> emprendedores, profesionistas independientes y pequeños negocios que comienzan o necesitan presencia rápida en internet.</p>
+            <h4>Características principales</h4>
+            <ul>
+              <li>Sitio web sencillo o Landing Page con funcionalidades esenciales.</li>
+              <li>Personalización básica con plantillas prediseñadas.</li>
+              <li>Tiempo de entrega corto.</li>
+              <li>Mantenimiento básico o periódico, generalmente mensual.</li>
+              <li>Capacidad inicial de almacenamiento, ancho de banda y usuarios.</li>
+            </ul>
+          </article>
+          <article class="plan-info" id="plan-info-premium" data-plan-panel="premium" aria-labelledby="plan-heading-premium" hidden>
+            <h3 id="plan-heading-premium">Plan Premium</h3>
+            <p><strong>Ideal para:</strong> PyMEs, empresas en crecimiento y negocios que necesitan un sitio completo para generar clientes de forma constante.</p>
+            <h4>Características principales</h4>
+            <ul>
+              <li>Sitio completo con múltiples páginas, catálogo, formularios avanzados o integraciones.</li>
+              <li>Diseño personalizado y alineado con la identidad de la marca.</li>
+              <li>Mejor rendimiento, velocidad de carga y optimización SEO básica o intermedia.</li>
+              <li>Soporte prioritario para atender incidencias con rapidez.</li>
+            </ul>
+          </article>
+          <article class="plan-info" id="plan-info-enterprise" data-plan-panel="enterprise" aria-labelledby="plan-heading-enterprise" hidden>
+            <h3 id="plan-heading-enterprise">Plan Enterprise (Empresarial o Corporativo)</h3>
+            <p><strong>Ideal para:</strong> grandes empresas y corporativos con necesidades específicas, alto tráfico o infraestructura compleja.</p>
+            <h4>Características principales</h4>
+            <ul>
+              <li>Desarrollo a la medida: sistemas web, e-commerce avanzado e integraciones con CRM o ERP.</li>
+              <li>Infraestructura escalable, servidores dedicados, seguridad avanzada y respaldos automatizados.</li>
+              <li>Soporte continuo 24/7 con atención personalizada y gestor de cuenta dedicado.</li>
+              <li>Capacidad, tráfico y cuentas de usuario definidos según los requerimientos del proyecto.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
     <section class="why-us">
         <h2>¿Por qué elegir Sozutech?</h2>
         <div class="why-grid">
@@ -230,6 +347,12 @@
     </div>
   </div>
 </section>
+
+<section id="Confianza y Metodología">
+  <h2>Confianza y Metodología</h2>
+  <p>En Sozutech, no solo escribimos código; diseñamos soluciones estratégicas. Nuestro enfoque se basa en metodologías ágiles que garantizan transparencia absoluta, entregas incrementales y comunicación fluida en cada etapa del desarrollo.</p>
+    <p>Entendemos que cada proyecto es una inversión crítica para su negocio, por ello, trabajamos con estándares de calidad  para asegurar que su tecnología sea robusta, escalable y, sobre todo, un motor de crecimiento para su empresa.</p>
+  
 
 <section id="contactanos">
   <h2>CONTÁCTANOS</h2>
@@ -338,6 +461,23 @@
         <option value="Venta de Equipos">Venta de Equipos de Cómputo</option>
       </select>
 
+      <label for="plan-selection">Planes de Servicio</label>
+          <select name="planes[]" id="plan-selection" multiple required>
+        <option value="Plan Básico">Plan Básico</option>
+        <option value="Plan Premium">Plan Premium</option>
+        <option value="Plan Enterprise">Plan Enterprise</option>
+      </select>
+
+      <label for="mensaje">Mensaje (Opcional)</label>
+      <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos más sobre tu proyecto..." ></textarea>
+      
+      <button type="submit">ENVIAR SOLICITUD</button>
+    </form>
+        <option value="Asesoría">Asesoría Tecnológica</option>
+        <option value="Venta de Equipos">Venta de Equipos de Cómputo</option>
+      </select>
+      
+
       <label for="mensaje">Mensaje (Opcional)</label>
       <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos más sobre tu proyecto..." ></textarea>
       
@@ -349,12 +489,23 @@
 
 
 
-    <a href="https://wa.me/525660323684" target="_blank" style="position:fixed; bottom:20px; right:20px; background-color:#25D366; border-radius:50%; padding:12px; box-shadow:2px 2px 5px rgba(0,0,0,0.3); z-index:999;">
-      <i class="fab fa-whatsapp" style="font-size:32px; color:white;"></i>
-    </a>
+    <div class="floating-social" role="group" aria-label="Redes sociales">
+        <a class="floating-whatsapp" href="https://wa.me/525660323684" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" title="WhatsApp">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+      </a>
+      <a class="social-linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+      </a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+      </a>
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+      </a>
+    </div>
 
-    <a href="tel:+525660323684" style="display:inline-block; position:fixed; bottom:100px; right:20px; background-color:#007BFF; color:white; padding:10px 20px; border-radius:5px; text-decoration:none; font-family:sans-serif; font-size:16px; z-index:999;">
-      📞 Llámanos: +52 56 6032 3684
+    <a class="floating-phone" href="tel:+525521080388">
+      📞 Llámanos: +52 55 2108 0388
     </a>
 
     <footer>
