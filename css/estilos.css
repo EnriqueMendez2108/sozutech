@@ -198,10 +198,23 @@ form button:hover {
 
 #formMessage {
   text-align: center;
-  display: none;
-  color: yellow;
+}
+
+.form-success {
+  display: block;
+  margin: 20px auto 0;
+  max-width: 900px;
+  padding: 16px 20px;
+  border: 1px solid #b7e4c7;
+  border-radius: 8px;
+  background: #effaf2;
+  color: #174c2b;
   font-weight: bold;
-  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.form-success[hidden] {
+  display: none;
 }
 
 

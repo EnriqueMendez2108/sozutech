@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
 
                     if (message) {
-                        message.style.display = "block";
+                        message.hidden = false;
                     }
                 } else {
                     alert("Hubo un problema al enviar el formulario.");
