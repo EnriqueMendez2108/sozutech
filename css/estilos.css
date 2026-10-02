@@ -500,6 +500,26 @@ form button:hover {
           font-size: 1.25rem;
         }
 
+        .welcome-promo {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          margin: 0 auto 30px;
+          padding: 16px 20px;
+          border: 1px solid rgba(240, 196, 25, 0.65);
+          border-radius: 10px;
+          background: linear-gradient(100deg, #fff8d8, #fff);
+          color: var(--primary);
+          text-align: center;
+          font-size: clamp(1rem, 2.5vw, 1.25rem);
+        }
+
+        .welcome-promo i {
+          color: #b28700;
+          font-size: 1.3em;
+        }
+
         .plan-select {
           padding: 0;
           border: 0;
@@ -724,6 +744,49 @@ form button:hover {
         }
         .modal-content label:first-of-type {
             margin-top: 0;
+        }
+
+        .modal-content [hidden] {
+          display: none !important;
+        }
+
+        .promo-code-help {
+          display: block;
+          margin-top: 8px;
+          color: #536273;
+          font-size: 0.85rem;
+          line-height: 1.5;
+        }
+
+        .promo-terms {
+          margin: 20px 0 0;
+          padding: 14px 16px;
+          border-left: 4px solid var(--accent);
+          border-radius: 5px;
+          background: #fff8d8;
+          color: #344054;
+          font-size: 0.9rem;
+          line-height: 1.6;
+        }
+
+        .quote-success {
+          margin-top: 18px;
+          padding: 20px;
+          border: 1px solid #b7e4c7;
+          border-radius: 8px;
+          background: #effaf2;
+          color: #174c2b;
+        }
+
+        .quote-success h4 {
+          margin: 0 0 8px;
+          font-size: 1.1rem;
+        }
+
+        .quote-success p {
+          margin: 0;
+          color: inherit;
+          line-height: 1.6;
         }
         .modal-content input,
         .modal-content select,

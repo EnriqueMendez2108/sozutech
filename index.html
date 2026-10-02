@@ -124,9 +124,6 @@
             </div>
 
             <p class="hero-cta">En Sozutech CDMX tus proyectos los hacemos nuestros, servicios de desarrollo web, soporte técnico o redes en CDMX con Sozutech.</p>
-            <p id="modalMessage" style="display:none; color:yellow; font-weight:bold; margin-top:10px; text-align:center;">
-              ¡Gracias! Tu solicitud fue enviada.
-            </p>
         </div>  
     </header>
 
@@ -186,6 +183,10 @@
 
     <section id="planes">
         <h2>Planes de Servicio</h2>
+        <aside class="welcome-promo" aria-label="Promoción de bienvenida">
+          <i class="fa-solid fa-tag" aria-hidden="true"></i>
+          <strong>¡10% de descuento en tu primera cotización o proyecto!</strong>
+        </aside>
         <div class="plans-table-wrap">
           <table class="plans-table">
             <caption class="visually-hidden">Comparación de los planes Básico, Premium y Enterprise</caption>
@@ -444,7 +445,7 @@
         type="tel" 
         id="telefono"
         name="telefono"
-        placeholder="5521080388" 
+        placeholder="5555555555" 
         required 
         maxlength="10" 
         pattern="[0-9]{10}" 
@@ -462,27 +463,31 @@
       </select>
 
       <label for="plan-selection">Planes de Servicio</label>
-          <select name="planes[]" id="plan-selection" multiple required>
+          <select name="planes[]" id="plan-selection" multiple required aria-describedby="plan-selection-help">
         <option value="Plan Básico">Plan Básico</option>
         <option value="Plan Premium">Plan Premium</option>
         <option value="Plan Enterprise">Plan Enterprise</option>
       </select>
+      <small id="plan-selection-help" class="promo-code-help">En móviles puedes seleccionar un solo plan.</small>
+
+          <label for="codigo-descuento">Código de descuento (opcional)</label>
+          <input type="text" id="codigo-descuento" name="codigo_descuento" placeholder="BIENVENIDO10 o PRIMERAMOVIL" maxlength="30" autocomplete="off" aria-describedby="promo-code-help">
+          <small id="promo-code-help" class="promo-code-help">La oferta del 10% se aplicará automáticamente a tu primera cotización; puedes indicar un código promocional si lo tienes.</small>
+
+          <input type="hidden" name="descuento_porcentaje" value="10%">
+          <input type="hidden" name="descuento_confirmacion" value="Descuento de bienvenida del 10% aplicado para considerarse en el cálculo preliminar de la primera cotización.">
 
       <label for="mensaje">Mensaje (Opcional)</label>
       <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos más sobre tu proyecto..." ></textarea>
       
       <button type="submit">ENVIAR SOLICITUD</button>
     </form>
-        <option value="Asesoría">Asesoría Tecnológica</option>
-        <option value="Venta de Equipos">Venta de Equipos de Cómputo</option>
-      </select>
-      
 
-      <label for="mensaje">Mensaje (Opcional)</label>
-      <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos más sobre tu proyecto..." ></textarea>
-      
-      <button type="submit">ENVIAR SOLICITUD</button>
-    </form>
+        <div id="quote-success" class="quote-success" role="status" aria-live="polite" tabindex="-1" hidden>
+          <h4>¡Gracias por tu solicitud!</h4>
+          <p>Tu solicitud ha sido recibida. Hemos aplicado automáticamente un 10% de descuento de bienvenida para que se considere en el cálculo preliminar.</p>
+        </div>
+        <p class="promo-terms"><strong>Validez del descuento:</strong> Esta oferta de bienvenida es válida durante los próximos 15 días hábiles a partir de la emisión de esta cotización.</p>
 
   </div>
 </div>  

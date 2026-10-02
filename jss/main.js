@@ -23,10 +23,20 @@ window.closeModal = function(id) {
             f.reset();
             const inputs = f.querySelectorAll('input, textarea, select');
             inputs.forEach(i => {
-                i.value = "";
-                i.setAttribute('value', '');
+                if (i.type !== 'hidden') {
+                    i.value = "";
+                    i.setAttribute('value', '');
+                }
             });
+            if (f.id === 'form-cotizacion') {
+                f.hidden = false;
+            }
         });
+
+        const quoteSuccess = m.querySelector('#quote-success');
+        if (quoteSuccess) {
+            quoteSuccess.hidden = true;
+        }
     }
 };
 
@@ -178,33 +188,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // FORMULARIO DEL MODAL DE COTIZACIÓN
     const modalForm = document.getElementById("form-cotizacion");
-    const modalMessage = document.getElementById("modalMessage");
+    const quoteSuccess = document.getElementById("quote-success");
+    const promoCode = document.getElementById("codigo-descuento");
+    const planSelection = document.getElementById("plan-selection");
+    const validPromoCodes = new Set(["BIENVENIDO10", "PRIMERAMOVIL"]);
+
+    if (planSelection) {
+        const mobilePlanSelection = window.matchMedia('(max-width: 768px)');
+        const updatePlanSelectionMode = event => {
+            const isMobile = event.matches;
+
+            if (isMobile && planSelection.multiple) {
+                const selectedPlan = planSelection.selectedOptions[0]?.value;
+                planSelection.multiple = false;
+                if (selectedPlan) {
+                    planSelection.value = selectedPlan;
+                }
+            } else if (!isMobile) {
+                planSelection.multiple = true;
+            }
+        };
+
+        updatePlanSelectionMode(mobilePlanSelection);
+        if (mobilePlanSelection.addEventListener) {
+            mobilePlanSelection.addEventListener('change', updatePlanSelectionMode);
+        } else {
+            mobilePlanSelection.addListener(updatePlanSelectionMode);
+        }
+    }
+
+    if (promoCode) {
+        promoCode.addEventListener('input', () => {
+            const code = promoCode.value.trim().toUpperCase();
+            const isValid = code === '' || validPromoCodes.has(code);
+            promoCode.setCustomValidity(isValid ? '' : 'Código no reconocido. Usa BIENVENIDO10 o PRIMERAMOVIL, o deja el campo vacío para aplicar la oferta automáticamente.');
+        });
+    }
 
     if (modalForm) {
         modalForm.addEventListener("submit", async function(e) {
             e.preventDefault();
 
             try {
+                const formData = new FormData(modalForm);
+                if (promoCode) {
+                    formData.set('codigo_descuento', promoCode.value.trim().toUpperCase());
+                }
+
                 const response = await fetch(modalForm.action, {
                     method: modalForm.method,
-                    body: new FormData(modalForm),
+                    body: formData,
                     headers: { 'Accept': 'application/json' }
                 });
 
                 if (response.ok) {
-                    modalForm.reset();
-
-                    // Limpieza manual de campos
-                    const inputs = modalForm.querySelectorAll("input, textarea");
-                    inputs.forEach(i => {
-                        i.value = "";
-                        i.setAttribute("value", "");
-                    });
-
-                    if (modalMessage) {
-                        modalMessage.style.display = "block";
+                    if (quoteSuccess) {
+                        modalForm.hidden = true;
+                        quoteSuccess.hidden = false;
+                        quoteSuccess.focus();
                     }
-                    closeModal('modal-cotizacion'); // opcional: cerrar modal tras enviar
                 } else {
                     alert("Hubo un problema al enviar la cotización.");
                 }
