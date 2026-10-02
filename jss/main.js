@@ -44,6 +44,70 @@ window.toggleMenu = function() {
 
 // 2. INICIALIZACIÓN DE EVENTOS
 document.addEventListener('DOMContentLoaded', () => {
+
+    // PESTAÑAS DE QUIÉNES SOMOS
+    document.querySelectorAll('[data-tabs]').forEach(tabGroup => {
+        const tabs = Array.from(tabGroup.querySelectorAll('[role="tab"]'));
+
+        const activateTab = tab => {
+            tabs.forEach(currentTab => {
+                const isSelected = currentTab === tab;
+                currentTab.setAttribute('aria-selected', String(isSelected));
+                currentTab.tabIndex = isSelected ? 0 : -1;
+
+                const panel = document.getElementById(currentTab.getAttribute('aria-controls'));
+                if (panel) {
+                    panel.hidden = !isSelected;
+                }
+            });
+        };
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => activateTab(tab));
+            tab.addEventListener('keydown', event => {
+                let nextIndex;
+                if (event.key === 'ArrowRight') {
+                    nextIndex = (index + 1) % tabs.length;
+                } else if (event.key === 'ArrowLeft') {
+                    nextIndex = (index - 1 + tabs.length) % tabs.length;
+                } else if (event.key === 'Home') {
+                    nextIndex = 0;
+                } else if (event.key === 'End') {
+                    nextIndex = tabs.length - 1;
+                } else {
+                    return;
+                }
+
+                event.preventDefault();
+                const nextTab = tabs[nextIndex];
+                activateTab(nextTab);
+                nextTab.focus();
+            });
+        });
+    });
+
+    // DETALLES DE LOS PLANES
+    const planTriggers = document.querySelectorAll('[data-plan-trigger]');
+    planTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const panelId = trigger.getAttribute('aria-controls');
+            const panel = document.getElementById(panelId);
+            const shouldOpen = trigger.getAttribute('aria-expanded') !== 'true';
+
+            planTriggers.forEach(otherTrigger => {
+                otherTrigger.setAttribute('aria-expanded', 'false');
+                const otherPanel = document.getElementById(otherTrigger.getAttribute('aria-controls'));
+                if (otherPanel) {
+                    otherPanel.hidden = true;
+                }
+            });
+
+            if (panel && shouldOpen) {
+                trigger.setAttribute('aria-expanded', 'true');
+                panel.hidden = false;
+            }
+        });
+    });
     
     // SLIDESHOW
     const slides = document.querySelectorAll('.slide');
@@ -165,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', toggleMenu);
+        hamburger.addEventListener('click', () => window.toggleMenu());
     }
 
     navItems.forEach(item => {
