@@ -361,6 +361,7 @@
   <p>Atendemos empresas y hogares en toda la Zona Metropolitana de la CDMX con servicios de desarrollo web, soporte técnico, redes y venta de equipos.</p>
   
   <form id="contactForm" action="https://formspree.io/f/xjgjjzkg" method="POST">
+    <input type="hidden" name="_subject" value="Nueva solicitud desde el formulario de contacto de Sozutech">
     <input type="text" name="nombre" placeholder="Nombre" required>
     <input type="email" name="email" placeholder="Email" required>
     <input type="tel" id="contact-phone" name="telefono" placeholder="Teléfono (10 dígitos)" required maxlength="10" pattern="[0-9]{10}" inputmode="numeric" title="Ingresa exactamente 10 dígitos numéricos" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)">
@@ -433,53 +434,65 @@
           action="https://formspree.io/f/xjgjjzkg" 
           method="POST" 
           autocomplete="off">
+      <input type="hidden" name="_subject" value="Nueva cotización desde el sitio web de Sozutech">
 
-      <label for="nombre">Nombre Completo</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Nombre - Apellido" required>
+      <div class="quote-field">
+        <label for="nombre">Nombre Completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre - Apellido" required>
+      </div>
       
-      <label for="email">Correo Electrónico</label>
-      <input type="email" id="email" name="email" placeholder="email@dominio.com" required>
+      <div class="quote-field">
+        <label for="email">Correo Electrónico</label>
+        <input type="email" id="email" name="email" placeholder="email@dominio.com" required>
+      </div>
       
-      <label for="telefono">Teléfono (10 dígitos)</label>
-      <input 
-        type="tel" 
-        id="telefono"
-        name="telefono"
-        placeholder="5555555555" 
-        required 
-        maxlength="10" 
-        pattern="[0-9]{10}" 
-        inputmode="numeric"
-        title="Por favor, ingresa exactamente 10 dígitos numéricos"
-        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)">
+      <div class="quote-field">
+        <label for="telefono">Teléfono (10 dígitos)</label>
+        <input
+          type="tel"
+          id="telefono"
+          name="telefono"
+          placeholder="5555555555"
+          required
+          maxlength="10"
+          pattern="[0-9]{10}"
+          inputmode="numeric"
+          title="Por favor, ingresa exactamente 10 dígitos numéricos"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)">
+      </div>
 
-      <label for="servicios">Servicios de Interés</label>
-      <select name="servicios[]" id="servicios" multiple required>
-        <option value="Diseño Web">Diseño Web</option>
-        <option value="Desarrollo de Software">Desarrollo de Software</option>
-        <option value="Soporte Técnico">Soporte Técnico</option>
-        <option value="Redes">Redes e Infraestructura</option>
-        <option value="Asesoría">Asesoría Tecnológica</option>
-        <option value="Venta de Equipos">Venta de Equipos de Cómputo</option>
-      </select>
+      <fieldset class="quote-options quote-services">
+        <legend>Servicios de interés</legend>
+        <label class="quote-option"><input type="checkbox" name="servicios[]" value="Diseño Web"><span>Diseño Web</span></label>
+        <label class="quote-option"><input type="checkbox" name="servicios[]" value="Desarrollo de Software"><span>Desarrollo de Software</span></label>
+        <label class="quote-option"><input type="checkbox" name="servicios[]" value="Soporte Técnico"><span>Soporte Técnico</span></label>
+        <label class="quote-option"><input type="checkbox" name="servicios[]" value="Redes"><span>Redes e Infraestructura</span></label>
+        <label class="quote-option"><input type="checkbox" name="servicios[]" value="Asesoría"><span>Asesoría Tecnológica</span></label>
+        <label class="quote-option"><input type="checkbox" name="servicios[]" value="Venta de Equipos"><span>Venta de Equipos de Cómputo</span></label>
+        <small id="service-selection-help" class="promo-code-help">Selecciona uno o varios servicios.</small>
+      </fieldset>
 
-      <label for="plan-selection">Elegir mi plan</label>
-          <select name="planes[]" id="plan-selection" multiple required aria-describedby="plan-selection-help">
-        <option value="Plan Básico">Plan Básico</option>
-        <option value="Plan Premium">Plan Premium</option>
-        <option value="Plan Enterprise">Plan Enterprise</option>
-      </select>
-      <small id="plan-selection-help" class="promo-code-help">En móviles puedes seleccionar un solo plan.</small>
+      <fieldset class="quote-options quote-plans">
+        <legend>Elegir mi plan</legend>
+        <label class="quote-option"><input type="radio" name="planes[]" value="Plan Básico" required><span>Plan Básico</span></label>
+        <label class="quote-option"><input type="radio" name="planes[]" value="Plan Premium" required><span>Plan Premium</span></label>
+        <label class="quote-option"><input type="radio" name="planes[]" value="Plan Enterprise" required><span>Plan Enterprise</span></label>
+        <small id="plan-selection-help" class="promo-code-help">Selecciona un solo plan.</small>
+      </fieldset>
 
-          <label for="codigo-descuento">Código de descuento (opcional)</label>
-          <input type="text" id="codigo-descuento" name="codigo_descuento" placeholder="BIENVENIDO10 o PRIMERAMOVIL" maxlength="30" autocomplete="off" aria-describedby="promo-code-help">
-          <small id="promo-code-help" class="promo-code-help">La oferta del 10% se aplicará automáticamente a su primera cotización; puedes indicar un código promocional si lo tienes.</small>
+      <div class="quote-field quote-promo">
+        <label for="codigo-descuento">Código de descuento (opcional)</label>
+        <input type="text" id="codigo-descuento" name="codigo_descuento" placeholder="BIENVENIDO10 o PRIMERAMOVIL" maxlength="30" autocomplete="off" aria-describedby="promo-code-help">
+        <small id="promo-code-help" class="promo-code-help">10% de descuento en tu primera cotización. Ingresa un código si tienes uno.</small>
+      </div>
 
-          <input type="hidden" name="descuento_porcentaje" value="10%">
-          <input type="hidden" name="descuento_confirmacion" value="Descuento de bienvenida del 10% aplicado para considerarse en propuesta inicial.">
+      <input type="hidden" name="descuento_porcentaje" value="10%">
+      <input type="hidden" name="descuento_confirmacion" value="Descuento de bienvenida del 10% aplicado para considerarse en propuesta inicial.">
 
-      <label for="mensaje">Comparta los detalles de su proyecto</label>
-      <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos más sobre su proyecto..." ></textarea>
+      <div class="quote-field quote-message">
+        <label for="mensaje">Comparta los detalles de su proyecto</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos más sobre su proyecto..."></textarea>
+      </div>
       
       <button type="submit">Agende asesoría gratuita</button>
     </form>
@@ -488,7 +501,7 @@
           <h4>¡Agradecemos su solicitud!</h4>
           <p>Hemos recibido su requerimiento con éxito. Le confirmamos que hemos aplicado automáticamente un 10% de descuento de bienvenida sobre su propuesta inicial. Nos pondremos en contacto a la brevedad.</p>
         </div>
-        <p class="promo-terms"><strong>Validez del descuento:</strong> Esta oferta de bienvenida es válida durante los próximos 15 días hábiles a partir de la emisión de esta cotización.</p>
+        <p class="promo-terms"><strong>Validez del descuento:</strong> 15 días hábiles a partir de la emisión de la cotización.</p>
 
   </div>
 </div>  
@@ -513,6 +526,77 @@
     <a class="floating-phone" href="tel:+525521080388">
       📞 Llámanos: +52 55 2108 0388
     </a>
+
+    <div class="assistant-widget">
+      <section class="assistant-panel" id="assistant-panel" role="dialog" aria-labelledby="assistant-title" aria-hidden="true" hidden>
+        <header class="assistant-header">
+          <div class="assistant-avatar" aria-hidden="true"><i class="fa-solid fa-headset"></i></div>
+          <div class="assistant-heading">
+            <h2 id="assistant-title">Asistente Sozutech</h2>
+            <p><span class="assistant-online-dot"></span> En línea · respuestas instantáneas</p>
+          </div>
+          <button class="assistant-close" id="assistant-close" type="button" aria-label="Cerrar asistente">&times;</button>
+        </header>
+
+        <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions">
+          <p class="assistant-message assistant-message--bot">¡Hola! Soy el asistente virtual de Sozutech. Puedo orientarte sobre nuestros servicios o ayudarte a solicitar una cotización gratuita.</p>
+          <div class="assistant-quick-actions" aria-label="Opciones frecuentes">
+            <button type="button" data-assistant-action="services">Ver servicios</button>
+            <button type="button" data-assistant-action="quote">Solicitar cotización</button>
+            <button type="button" data-assistant-action="whatsapp">Hablar por WhatsApp</button>
+          </div>
+        </div>
+
+        <form class="assistant-lead-form" id="assistant-lead-form" action="https://formspree.io/f/xjgjjzkg" method="POST" hidden>
+          <div class="assistant-lead-heading">
+            <h3>Solicita que te contactemos</h3>
+            <button class="assistant-lead-close" id="assistant-lead-close" type="button">Volver al chat</button>
+          </div>
+          <label for="assistant-name">Nombre</label>
+          <input id="assistant-name" name="nombre" type="text" autocomplete="name" maxlength="100" required>
+          <label for="assistant-email">Correo electrónico</label>
+          <input id="assistant-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+          <label for="assistant-phone">Teléfono (10 dígitos)</label>
+          <input id="assistant-phone" name="telefono" type="tel" autocomplete="tel-national" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" title="Ingresa exactamente 10 dígitos numéricos" required>
+          <label for="assistant-service">Servicio de interés</label>
+          <select id="assistant-service" name="servicio" required>
+            <option value="" selected disabled>Elige un servicio</option>
+            <option>Desarrollo web</option>
+            <option>Desarrollo de software</option>
+            <option>Soporte técnico</option>
+            <option>Redes e infraestructura</option>
+            <option>Venta de equipos</option>
+            <option>Asesoría tecnológica</option>
+          </select>
+          <label for="assistant-details">Cuéntanos brevemente qué necesitas</label>
+          <textarea id="assistant-details" name="mensaje" rows="3" maxlength="1500" required></textarea>
+          <input type="hidden" name="_subject" value="Nueva solicitud desde el asistente de Sozutech">
+          <input type="hidden" name="origen" value="Asistente virtual del sitio web">
+          <label class="assistant-consent">
+            <input name="consentimiento" type="checkbox" value="Autorizo el uso de mis datos para responder a esta solicitud." required>
+            <span>Autorizo que Sozutech use mis datos para responder a esta solicitud. No incluyas información sensible.</span>
+          </label>
+          <label class="assistant-honeypot" aria-hidden="true">Deja este campo vacío
+            <input name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+          </label>
+          <p class="assistant-form-status" id="assistant-form-status" role="status" aria-live="polite"></p>
+          <button class="assistant-submit" type="submit">Enviar solicitud</button>
+        </form>
+
+        <form class="assistant-chat-form" id="assistant-chat-form">
+          <label class="visually-hidden" for="assistant-question">Escribe tu pregunta</label>
+          <input id="assistant-question" name="pregunta" type="text" maxlength="500" placeholder="Escribe tu pregunta..." autocomplete="off" required>
+          <button type="submit" aria-label="Enviar pregunta"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+        </form>
+        <p class="assistant-privacy">Asistente gratuito de respuestas guiadas. Tus datos solo se envían si llenas y autorizas el formulario.</p>
+      </section>
+
+      <button class="assistant-toggle" id="assistant-toggle" type="button" aria-label="Abrir asistente de Sozutech" aria-expanded="false" aria-controls="assistant-panel">
+        <i class="fa-regular fa-comments assistant-toggle-open" aria-hidden="true"></i>
+        <i class="fa-solid fa-xmark assistant-toggle-close" aria-hidden="true"></i>
+        <span class="visually-hidden">Abrir asistente</span>
+      </button>
+    </div>
 
     <footer>
         <p>© 2026 Sozutech - Todos los derechos reservados.</p>
