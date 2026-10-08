@@ -125,19 +125,27 @@
     flex-direction: column;
     background: var(--primary);
     position: absolute;
-    top: 100%;
+    top: calc(100% + 6px);
     right: 20px;
+    margin: 0;
     padding: 15px;
     border-radius: 8px;
     z-index: 1000;
     max-width: calc(100vw - 40px);
     max-height: calc(100vh - 140px);
+    max-height: calc(100dvh - 140px);
     overflow-y: auto;
+    box-shadow: 0 10px 28px rgba(10, 35, 66, 0.28);
   }
 
   .nav-links.show {
     display: flex; /* mostrar cuando se activa */
     z-index: 1000;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 10px 8px;
   }
 }
 
@@ -724,6 +732,7 @@ form button:hover {
         /* --- MODALES --- */
         .modal {
             display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
+            overflow-y: auto; overscroll-behavior: contain;
             background-color: rgba(10, 35, 66, 0.5); backdrop-filter: blur(8px);
         }
         .modal-content {
@@ -893,7 +902,7 @@ form button:hover {
             max-width: none;
             max-height: calc(100dvh - 24px);
             margin: 12px auto;
-            padding: 16px 24px;
+            padding: 16px 24px 90px;
             text-align: left;
         }
         #modal-cotizacion .modal-content h3 {
@@ -950,15 +959,21 @@ form button:hover {
         }
         @media (max-width: 600px) {
             #modal-cotizacion .modal-content {
-                padding: 10px 14px;
+                width: calc(100% - 16px);
+                max-height: calc(100dvh - 16px);
+                margin: 8px auto;
+                padding: 14px 14px 92px;
+            }
+            body.modal-open #modal-cotizacion .modal-content {
+                padding-top: 76px;
             }
             #modal-cotizacion .modal-content h3 {
                 margin-bottom: 8px;
                 font-size: 1.15rem;
             }
             #form-cotizacion {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                row-gap: 8px;
+                grid-template-columns: minmax(0, 1fr);
+                row-gap: 10px;
             }
             #form-cotizacion .quote-field input,
             #form-cotizacion .quote-field textarea {
@@ -974,7 +989,7 @@ form button:hover {
             #form-cotizacion .quote-promo,
             #form-cotizacion .quote-message,
             #form-cotizacion > button {
-                grid-column: 1 / -1;
+                grid-column: 1;
             }
             #form-cotizacion .quote-plans {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -982,6 +997,9 @@ form button:hover {
         }
         @media (max-width: 360px) {
             #form-cotizacion {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            #form-cotizacion .quote-services {
                 grid-template-columns: minmax(0, 1fr);
             }
         }
@@ -1012,12 +1030,21 @@ form button:hover {
             position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer;
             color: #0a2342;
             width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+            padding: 0; border: 0; background: transparent;
             transition: all 0.2s ease;
         }
+        .modal-content button.close { width: 30px; margin: 0; padding: 0; }
+        .close:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
         .close:hover {
             background: rgba(255, 0, 0, 0.1);
             border-radius: 50%;
             color: #ff4444;
+        }
+        .modal-content button.close:hover {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff4444;
+            box-shadow: none;
+            transform: none;
         }
 
         footer { background: var(--primary); color: white; text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
@@ -1080,6 +1107,9 @@ form button:hover {
           bottom: 20px;
           z-index: 1100;
           font-family: 'Open Sans', sans-serif;
+        }
+        body.modal-open .assistant-widget {
+          z-index: 10001;
         }
 
         .assistant-toggle {
@@ -1409,6 +1439,12 @@ form button:hover {
 
         @media (max-width: 480px) {
           .assistant-widget { right: 15px; bottom: 72px; }
+          body.modal-open .assistant-widget {
+            top: 14px;
+            right: auto;
+            bottom: auto;
+            left: 14px;
+          }
           .assistant-toggle { width: 54px; height: 54px; font-size: 1.3rem; }
           .assistant-panel {
             position: fixed;

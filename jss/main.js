@@ -3,6 +3,7 @@ window.openModal = function(id) {
     const m = document.getElementById(id);
     if (m) {
         m.style.display = "block";
+        document.body.classList.add("modal-open");
         document.body.style.overflow = "hidden";
         
         // --- LA CLAVE PARA QUE FUNCIONE ESC ---
@@ -15,7 +16,12 @@ window.closeModal = function(id) {
     const m = document.getElementById(id);
     if (m) {
         m.style.display = "none";
-        document.body.style.overflow = "auto";
+        const anotherModalIsOpen = Array.from(document.querySelectorAll(".modal"))
+            .some(modal => modal !== m && window.getComputedStyle(modal).display !== "none");
+        if (!anotherModalIsOpen) {
+            document.body.classList.remove("modal-open");
+            document.body.style.overflow = "";
+        }
 
         // Limpieza de formularios dentro del modal
         const forms = m.querySelectorAll('form');
@@ -467,6 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- EVENTO PARA EL MENÚ HAMBURGUESA ---
     const hamburger = document.querySelector('.hamburger');
+    const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelector('.nav-links');
     const navItems = document.querySelectorAll('.nav-links a');
 
@@ -479,8 +486,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    if (hamburger && navLinks) {
+    if (hamburger && navLinks && navbar) {
         hamburger.addEventListener('click', () => window.toggleMenu());
+
+        document.addEventListener('click', event => {
+            if (event.target instanceof Node && !navbar.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && navLinks.classList.contains('show')) {
+                closeMobileMenu();
+                hamburger.focus();
+            }
+        });
     }
 
     navItems.forEach(item => {
